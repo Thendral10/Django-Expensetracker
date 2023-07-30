@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    <title>Personal Finance Management </title>
+    <head>
+        <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+          }
+          
+          th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #DDD;
+          }
+          
+          tr:hover {background-color: #D6EEEE;}
+
+          .topnav a {
+            float: right;
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+          }
+          
+          .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+          }
+          
+          .topnav a.active {
+            background-color: #2196F3;
+            color: white;
+          }
+
+          .topnav .search-container {
+            float: right;
+          }
+          .topnav input[type=text] {
+            float: center;
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+          }
+          
+          .topnav .search-container button {
+            float: center;
+            padding: 6px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background: #ddd;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+          }
+          
+          .topnav .search-container button:hover {
+            background: #ccc;
+          }
+          
+          </style>
+        </head>
+<body>
+    <h1>Welcome</h1>
+        <div class="topnav">
+           
+            <a class="active" href="/add">Add Expense</a>
+            
+            <table align="center">
+                <tr rowspan="2">
+                <form action="/action_page.php">
+                    <input type="date" placeholder="" name="search">
+                    <button type="submit"><i class="fa fa-filter"></i></button>
+                </form>
+            </tr>
+            <tr>
+              <form action="/" method="post">
+                <input type="text" placeholder="Search by name" name="search" >
+                <button type="submit" href="/"><i class="fa fa-search"></i></button>
+              </form></tr></table>
+            </div>
+          </div>
+    <div >
+        <table>
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Updated at</th>
+                <th colspan=2>Action</th>
+
+              </tr>
+            </thead>
+            <tbody>
+                {%for d in data %}
+              <tr>
+                <th>{{d.id}}</th>
+                
+                <td>{{d.name}}</td>
+                <td>{{d.date}}</td>
+                <td>{{d.category}}</td>
+                <td>{{d.amount}}</td>
+                <td>{{d.uat}}</td>
+               <td><a type="button" href="/update/{{d.id}}" class="btn Expense.objects.get(id=id)"><i class="fa fa-edit"></i></a></td>
+               <td><a type="button" href="/delete/{{d.id}}" class="btn"><i class="fa fa-trash"></i></a></td>
+
+              </tr>
+               {% endfor %}
+            </tbody>
+          </table>
+    </div>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    
+  </body>
+</html>
